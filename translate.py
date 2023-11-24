@@ -8,7 +8,7 @@ print(googletrans.LANGUAGES)
 recognizer = sr.Recognizer()
 translator = googletrans.Translator()
 input_language = 'fr'
-output_language = 'ru'
+output_language = 'tr'
 
 try:
     with sr.Microphone() as source:
