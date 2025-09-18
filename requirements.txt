@@ -1,1 +1,4 @@
-# To ensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
+# Application dependencies
+deep-translator>=1.11.4
+gTTS>=2.5.1
+playsound==1.2.2

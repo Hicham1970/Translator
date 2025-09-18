@@ -1,14 +1,17 @@
-import googletrans
-import speech_recognition as sr
+import winsound
+
 import gtts
-import playsound
+import speech_recognition as sr
+from deep_translator import GoogleTranslator
 
 # gtts means google text to speech
-print(googletrans.LANGUAGES)
+print(GoogleTranslator(source='en').get_supported_languages())
 recognizer = sr.Recognizer()
-translator = googletrans.Translator()
 input_language = 'fr'
 output_language = 'tr'
+translator = GoogleTranslator(source=input_language, target=output_language)
+
+txt = "Bonjour, je veux manger un gateau "
 
 try:
     with sr.Microphone() as source:
@@ -21,8 +24,8 @@ try:
 except:
     pass
 
-translated = translator.translate(txt, output_language)
-converted_audio = gtts.gTTS(translated.text, lang=output_language)
+translated = translator.translate(txt)
+converted_audio = gtts.gTTS(translated, lang=output_language)
 converted_audio.save('translated.mp3')
-playsound.playsound('translated.mp3')
-print(translated.text)
+winsound.PlaySound('translated.mp3', winsound.SND_FILENAME)
+print(translated)
