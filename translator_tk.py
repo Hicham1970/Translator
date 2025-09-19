@@ -202,7 +202,8 @@ class TranslatorApp(tk.Tk):
                 tts.save(temp_path)
                 playsound(temp_path)
             except Exception as exc:
-                self.after(0, lambda: messagebox.showerror('Erreur', f'La lecture a échoué: {exc}'))
+                err_msg = f'La lecture a échoué: {exc}'
+                self.after(0, lambda m=err_msg: messagebox.showerror('Erreur', m))
             finally:
                 if temp_path and os.path.exists(temp_path):
                     try:
